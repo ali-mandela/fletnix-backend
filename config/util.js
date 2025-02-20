@@ -36,39 +36,3 @@ module.exports.verifyToken = (req, res, next) => {
     });
 }; 
 
-// function to add csv file
-module.exports.uploadCSVToMongoDB = (filePath) => {
-    const mongoURI = process.env.MONGO_URI;
-    const results = [];
-
-    fs.createReadStream(filePath)
-        .pipe(csv())
-        .on('data', (data) => {
-            results.push(data);  
-        })
-        .on('end', async () => {
-            try {
-                await mongoose.connect(mongoURI, {
-                    useNewUrlParser: true,
-                    useUnifiedTopology: true
-                });
- 
-                const existingMovies = await Movies.find({
-                    title: { $in: results.map(movie => movie.title) }
-                });
-
-                if (existingMovies.length > 0) {
-                    console.log('At least one movie already exists in the database. No new data will be added.');
-                    mongoose.connection.close();
-                    return;  
-                }
- 
-                await Movies.insertMany(results);
-                console.log('CSV data uploaded successfully!');
-                mongoose.connection.close();
-            } catch (error) {
-                console.error('Error uploading data:', error);
-                mongoose.connection.close();
-            }
-        });
-};
