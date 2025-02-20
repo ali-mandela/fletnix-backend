@@ -4,8 +4,7 @@ const authRoute = require('./routes/authRoutes'); // Import authentication route
 const movieRoutes = require('./routes/movieRoutes'); // Import movie-related routes
 const morgan = require('morgan'); // Logger middleware for monitoring API requests
 const cors = require('cors'); // Enable Cross-Origin Resource Sharing
-const { connectDB } = require('./config/database'); // Database connection function
-
+const { connectDB } = require('./config/database'); // Database connection function 
 const app = express();
 
 // Establish database connection
@@ -15,7 +14,13 @@ connectDB();
 app.use(express.json());
 
 // Enable CORS for cross-origin API requests
-app.use(cors());
+app.use(cors({
+    origin: '*',  
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],  
+    allowedHeaders: ['Content-Type', 'Authorization'], 
+    credentials: true,  
+    optionsSuccessStatus: 200  
+}));
 
 // Log HTTP requests in a compact format
 app.use(morgan('tiny'));
