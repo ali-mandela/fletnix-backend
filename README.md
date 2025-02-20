@@ -19,7 +19,7 @@
 
 ## Endpoints details 
 
-**POST /api/auth/signup  --> to register a user with name, email, password, age**
-**POST /api/auth/signin , -->to login using email and password**
-**GET/api/movies/search?query&type&page for --> searching the movie**
-**GET /api/movies/:id --> getting the movie details**
+1. **POST /api/auth/signup  --> to register a user with name, email, password, age**
+2. **POST /api/auth/signin , -->to login using email and password**
+3. **GET/api/movies/search?query&type&page for --> searching the movie**
+4. **GET /api/movies/:id --> getting the movie details**
