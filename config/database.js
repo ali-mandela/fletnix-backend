@@ -29,10 +29,10 @@ const connectDB = async () => {
           } else {
             console.log('Movies already exist in the database, no data inserted.');
           } 
-          mongoose.connection.close();
+          // mongoose.connection.close();
         } catch (error) {
           console.error('Error processing CSV data or inserting into DB:', error);
-          mongoose.connection.close();
+          // mongoose.connection.close();
         }
       });
   } catch (error) {
