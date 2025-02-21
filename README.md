@@ -17,6 +17,13 @@
 4. **use the command  to start the server locally:**:
     npm run server
 
+
+4. **TO test the api endpoints the server locally:**:
+    chnage the url in the api.test.js file if the port is not 8000 
+    then start the server locally
+    type the command to ``` npm run test``
+Thank you.
+
 ## Endpoints details 
 
 1. **POST /api/auth/signup  --> to register a user with name, email, password, age**

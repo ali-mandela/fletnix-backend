@@ -13,6 +13,9 @@ const movieSchema = new mongoose.Schema({
         ],
         required: true
     },
+    cast:{
+type : String,
+    },
     title: {
         type: String,
         required: true
@@ -27,8 +30,7 @@ const movieSchema = new mongoose.Schema({
         type: Date
     },
     release_year: {
-        type: Number,
-        required: true
+        type: Number, 
     },
     rating: {
         type: String
